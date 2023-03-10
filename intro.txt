@@ -1,0 +1,116 @@
+dart is type safe language implies for any data of type 
+x, only the operations that are supported on this data x
+are allowed to be executed in the dart language.
+
+dart language is built such that it doesnt allow code 
+to run into undefined states, thus it has various
+compile time and run time checks. thus for every errror either
+a run time or compile time exception is thrown and this is known 
+as sound type system.
+
+dynamic keyword is used to by pass compile time checks, but these
+are still checked at the run time.
+
+dart is type infer language, thus when you write var a = 5.67 
+dart will automatically make this a as a double type and it will stay as
+double for rest of its life. this is kow as type interference.
+this happens at compile time, but if dynamic keyword is used then 
+it happens at run time.
+
+var is a keyword where as dynamic is a type in itself similar to how
+integer, float , double are types.
+
+example : dynamic keyword
+void main {
+    dynamic a = 5;
+    print (a.runtimeType); // integer
+    a = 7.0;
+    print (a.runtimeType); // doouble
+    a = 'test';
+    print(a.runtimeType); // string
+}
+thus here everything is happening at run time
+var keyword
+
+void main {
+    var a = 5;
+    print (a.runtimeType); // integer
+    a = 7.0;
+    print (a.runtimeType); //errror
+}
+here things happen at compile time
+
+
+when dart analyser doesnt have enough information when using var keyword
+it will convert var to dynamic internally.
+example : var a;
+since not enough info is present analyser will conver it to
+dybamic a;
+if run time analyser doesnt known the type then it is converted to null.
+Null a;
+
+Sound Null Safety : it means that values cant be null unless it is explicitly
+said that they can be null. dart has sound null Safety
+
+thus variable can either be nullable or non-nullable but never both together
+and one a variable is determined to be non nullable it will always be non nullable
+------------------------------------------------------------------------------------------
+
+how dart code is converted to actual running code?
+dart has a compiler that converts the source code into machine code that
+/ intermediate languages that runs on different machines.
+
+for example for arm32 , arm64, x86_64 type of machine dart uses Just In 
+Time (JIT) and Ahead Of Time (AOT) type os compilers whereas for web it 
+uses dartdevc(dart development compiler) and dart2js (dart to javascript) 
+compiler.
+
+all the development process has 2 or more stages;
+2 stages being development stage and production stage
+
+when in development programmers need features like hot reload, easy debugging
+, easy testing, incremental recompilations etc. these features are provided
+by just in time compiler which compiles the code as it is needed. for example
+during hot reload only the part of code that is changed is compiled again and rest
+of the code is used from previous compilation itself. it also allows incremental
+recompilations thus compiling codes in parts and using previous compiled codes if
+its not changed. JIT compiler is a slower compiler and converts the dart code 
+into intermediate language that is run by dart vartual machine.
+
+during the producion phase, programmers only care about speed and do not need
+features like hot reload easy testing and debugginf etc. thus AOT compiler 
+is used that converts the code into the machine level code directly and all the code 
+is compiled ahead of time in one go thus running the app as fast as possible.
+
+similarly during web development using dart dart development compiler is used during the
+development phase and dart to javascript compiler is used during the production phase
+----------------------------------------------------------------------------------------
+
+there is not project in dart, everthing is packages. similar to npm in 
+dart we have pub dev. packages uploaded to pub dev are known as library packages
+and packages not uploaded to pun dev are known as application packages.
+
+dart package manager is pub
+
+everything is a object in dart
+
+datatypes available in dart 
+numbers -- int, double 
+Strings
+Booleans
+Lists (arrays)
+Maps 
+Runes(for expressing unicode charaters in a string)
+symbols
+
+all datatypes in dart are objects and therefore values
+are by default null.
+------------------------------------------------------------
+final and const keywords are used when values of variables
+never change
+
+final variables can only be set once and it is initialized when accessed
+const variables are implicitly final but it is initialezed at coompile time
+
+instance variable can be final but cannot be const. if you need constant at 
+class level then make it static const
